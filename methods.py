@@ -54,7 +54,7 @@ def create_pivot(df, day_1, day_2):
 
     return pvt_table
 
-def send_mail(html_table, first_file):
+def send_mail(html_table, first_file, second_file):
     outlook_user = os.environ.get('OUTLOOK_USER')
     outlook_password = os.environ.get('OUTLOOK_PASS')
     outlook_server = os.environ.get('OUTLOOK_SERVER')
@@ -82,8 +82,13 @@ def send_mail(html_table, first_file):
             cc_recipients=['barnwalp@indianoil.in'])
 
     # attaching a file in the msg
+
     with open(first_file, 'rb') as f:
-        my_file = FileAttachment(name='nozzle_sale_1.xlsx', content=f.read())
-    msg.attach(my_file)
+        first_attachment = FileAttachment(name='nozzle_sale_report.xlsx', content=f.read())
+    with open(second_file, 'rb') as f:
+        second_attachment = FileAttachment(name='nozzle_sale_report (1).xlsx', content=f.read())
+
+    msg.attach(first_attachment)
+    msg.attach(second_attachment)
 
     msg.send_and_save()
