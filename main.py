@@ -21,8 +21,11 @@ day_4 = date.today() - timedelta(days=4)
 
 # print(clean_data(df_1, day_1, day_2))
 pvt = pd.concat([
-    create_pivot(df_1, day_1, day_2),
-    create_pivot(df_2, day_3, day_4)
+    create_pivot(df_2, day_3, day_4),
+    create_pivot(df_1, day_1, day_2)
     ], axis=1)
 
-print(pvt)
+pvt = pvt // 1000
+pvt.loc["Grand-Total"] = pvt.sum()
+
+send_mail(pvt.to_html())

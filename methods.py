@@ -1,4 +1,7 @@
 import pandas as pd
+from exchangelib import Account, Message, Credentials, HTMLBody
+from exchangelib import Configuration, DELEGATE
+import os
 
 def create_pivot(df, day_1, day_2):
     df = df.drop(columns=[
@@ -50,3 +53,31 @@ def create_pivot(df, day_1, day_2):
             aggfunc=sum)
 
     return pvt_table
+
+def send_mail(html_table):
+    outlook_user = os.environ.get('OUTLOOK_USER')
+    outlook_password = os.environ.get('OUTLOOK_PASS')
+    outlook_server = os.environ.get('OUTLOOK_SERVER')
+    outlook_email = os.environ.get('OUTLOOK_EMAIL')
+
+    credentials = Credentials(
+            username=outlook_user,
+            password=outlook_password)
+
+    config = Configuration(
+            server=outlook_server,
+            credentials=credentials)
+
+    account = Account(
+            primary_smtp_address=outlook_email,
+            config=config,
+            autodiscover=False,
+            access_type=DELEGATE)
+
+    msg = Message(
+            account=account,
+            subject="Nozzle Sales Report - Sambalpur DO",
+            body=HTMLBody(html_table),
+            to_recipients=['barnwalp@indianoil.in'])
+
+    msg.send_and_save()
