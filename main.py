@@ -28,4 +28,4 @@ pvt = pd.concat([
 pvt = pvt // 1000
 pvt.loc["Grand-Total"] = pvt.sum()
 
-send_mail(pvt.to_html())
+send_mail(pvt.to_html(), first_file)

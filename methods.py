@@ -1,6 +1,6 @@
 import pandas as pd
 from exchangelib import Account, Message, Credentials, HTMLBody
-from exchangelib import Configuration, DELEGATE
+from exchangelib import Configuration, DELEGATE, FileAttachment
 import os
 
 def create_pivot(df, day_1, day_2):
@@ -54,7 +54,7 @@ def create_pivot(df, day_1, day_2):
 
     return pvt_table
 
-def send_mail(html_table):
+def send_mail(html_table, first_file):
     outlook_user = os.environ.get('OUTLOOK_USER')
     outlook_password = os.environ.get('OUTLOOK_PASS')
     outlook_server = os.environ.get('OUTLOOK_SERVER')
@@ -78,6 +78,12 @@ def send_mail(html_table):
             account=account,
             subject="Nozzle Sales Report - Sambalpur DO",
             body=HTMLBody(html_table),
-            to_recipients=['barnwalp@indianoil.in'])
+            to_recipients=['barnwalp@indianoil.in'],
+            cc_recipients=['barnwalp@indianoil.in'])
+
+    # attaching a file in the msg
+    with open(first_file, 'rb') as f:
+        my_file = FileAttachment(name='nozzle_sale_1.xlsx', content=f.read())
+    msg.attach(my_file)
 
     msg.send_and_save()
