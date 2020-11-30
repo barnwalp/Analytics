@@ -5,6 +5,13 @@ from datetime import date, timedelta
 import time
 import pretty_errors
 
+
+# change current directory
+os.chdir('C:\\Users\\panka\\github_repo\\Analytics\\nozzle_sale_report')
+
+from methods import *
+
+
 # Read the downloaded excel file as df_1 and df_2
 first_file = 'C:\\Users\\panka\\Downloads\\Nozzle Sales Report.xlsx'
 second_file = 'C:\\Users\\panka\\Downloads\\Nozzle Sales Report (1).xlsx'
