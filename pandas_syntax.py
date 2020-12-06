@@ -32,3 +32,5 @@ df_dec_actor = df.groupby([(df['year']//10*10), 'type']).size()
 # indexing - cause performance imrovement, speed will further icnrease
 # if the index are in sorted order
 df = df.set_index(['title']).sort_index()
+
+
