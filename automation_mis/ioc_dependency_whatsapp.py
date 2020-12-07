@@ -14,13 +14,12 @@ os.chdir('C:\\Users\\panka\\github_repo\\Analytics\\automation_mis')
 from methods import *
 
 browser = webdriver.Chrome()
-browser.get('https://spandan.indianoil.co.in/RAPHASE6/SigninPage')
-password = os.getenv('CDRSM_PASS')
-user = os.getenv('CDRSM_UNAME')
+browser.get('https://web.whatsapp.com')
+wait = WebDriverWait(browser, 600)
 
-browser.find_element_by_name('username').send_keys(user)
-browser.find_element_by_name('password').send_keys(password)
+browser.find_elements_by_css_selector('[title~=Notes]').click()
 
+"""
 # the trick to avoid captcha is to wait for user to enter it manually
 # and click the submit button, then wait until an element from the
 # next page is located i.e. 'global_ro_code' in this case
@@ -116,6 +115,7 @@ path_to_file = 'C:/Users/panka/Downloads/Nozzle Sales Report (1).xlsx'
 while not os.path.exists(path_to_file):
     time.sleep(2)
 
+"""
 gc = gspread.service_account(filename='credential.json')
 sh = gc.open_by_key('1c8GkIHjMkcmapbvEwDkBSQACzChlLROnfPXPlJJ8Txs')
 data = sh.worksheet('data_transfer').get_all_values()
