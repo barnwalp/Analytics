@@ -13,8 +13,8 @@ def create_html(df, vendor):
         ])
     html_table = df.to_html()
     html_content = """
-    <html><body><h5>Pl find the list of issues due to which real time data transfer
-    is not happenning. You are requesetd to resolve these issues on priority</h5>
+    <html><body><h4>Pl find the list of issues due to which real time data transfer
+    is not happenning. You are requested to resolve these issues on priority</h4>
     """
     html_content += html_table
     html_content += """
@@ -29,7 +29,7 @@ def create_html(df, vendor):
     return html_content
 
 
-def send_mail(html_content, cc_list, vendor):
+def send_mail(html_content, to_list, cc_list, vendor):
     outlook_user = os.environ.get('OUTLOOK_USER')
     outlook_password = os.environ.get('OUTLOOK_PASS')
     outlook_server = os.environ.get('OUTLOOK_SERVER')
@@ -49,7 +49,7 @@ def send_mail(html_content, cc_list, vendor):
             account=account,
             subject=f'Data Transfer - {vendor} depenency - Sambalpur DO',
             body=HTMLBody(html_content),
-            to_recipients=['barnwalp@indianoil.in'],
-            #cc_recipients=cc_list)
+            to_recipients=to_list,
+            cc_recipients=cc_list
             )
     msg.send_and_save()
