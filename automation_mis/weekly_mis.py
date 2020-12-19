@@ -3,8 +3,9 @@ import pandas as pd
 import os
 
 
+file_path = os.path.join(os.getcwd(), 'Analytics', 'automation_mis')
 #change currnet directory
-os.chdir('C:\\Users\\panka\\github_repo\\Analytics\\automation_mis')
+os.chdir(file_path)
 
 from methods import *
 from whatsapp import *
