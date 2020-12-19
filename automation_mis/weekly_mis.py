@@ -3,9 +3,9 @@ import pandas as pd
 import os
 
 
-file_path = os.path.join(os.getcwd(), 'Analytics', 'automation_mis')
+#file_path = os.path.join(os.getcwd(), 'Analytics', 'automation_mis')
 #change currnet directory
-os.chdir(file_path)
+#os.chdir(file_path)
 
 from methods import *
 from whatsapp import *
