@@ -6,11 +6,15 @@ import os
 
 def create_html(df, vendor):
     df = df[df['Dependency'] == vendor]
-    df = df.drop(columns=[
-        'S No',
-        'RO Code',
-        'Mode of Transfer'
-        ])
+    df = df[['RO Name',
+        'Sales Area',
+        'Phase',
+        'Automation Vendor',
+        'VSAT Vendor',
+        'Last Data received on',
+        'Dependency',
+        'Reason for non-transfer of data', '
+        Target Date']]
     html_table = df.to_html()
     html_content = """
     <html><body><h4>Pl find the list of issues due to which real time data transfer

@@ -33,6 +33,7 @@ send_mail(create_html(df, "ORPAK"), to_orpak, cc_orpak, "ORPAK")
 send_mail(create_html(df, "HUGHES"), to_hughes, cc_hughes, "HUGHES")
 send_mail(create_html(df, "NELCO"), to_nelco, cc_nelco, "NELCO")
 
+"""
 df = df[df['Dependency'] == "IOCL"]
 df = df[['RO Name', 'Reason for non-transfer of data']]
 data = df.values.tolist()
@@ -41,4 +42,4 @@ for values in data:
     str = '- '.join(values)
     print(send_whatsapp(str, 9437086233))
 
-
+"""
