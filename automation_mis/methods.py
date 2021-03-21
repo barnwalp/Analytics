@@ -1,20 +1,20 @@
-import pandas as pd
 from exchangelib import Account, Message, Credentials, HTMLBody
-from exchangelib import Configuration, DELEGATE, FileAttachment
+from exchangelib import Configuration, DELEGATE
 import os
 
 
 def create_html(df, vendor):
     df = df[df['Dependency'] == vendor]
-    df = df[['RO Name',
-        'Sales Area',
-        'Phase',
-        'Automation Vendor',
-        'VSAT Vendor',
-        'Last Data received on',
-        'Dependency',
-        'Reason for non-transfer of data', '
-        Target Date']]
+    df = df[[
+                'RO Name',
+                'Sales Area',
+                'Phase',
+                'Automation Vendor',
+                'VSAT Vendor',
+                'Last Data received on',
+                'Dependency',
+                'Reason for non-transfer of data',
+                'Target Date']]
     html_table = df.to_html()
     html_content = """
     <html><body><h4>Pl find the list of issues due to which real time data transfer
