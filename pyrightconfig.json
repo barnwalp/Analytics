@@ -1,0 +1,14 @@
+{
+    "pythonPath": "/Users/pankaj/anaconda3/bin/python",
+    "venvPath": "/Users/pankaj/anaconda3",
+    "venv": "base",
+    "extraPaths": [
+        "/Users/pankaj/anaconda3/lib/python3.12/site-packages"
+    ],
+    "reportMissingImports": true,
+    "reportMissingTypeStubs": false,
+    "reportUnknownMemberType": false,
+    "reportUnknownArgumentType": false,
+    "reportUnknownVariableType": false
+}
+
