@@ -2,70 +2,54 @@
 import numpy as np
 import pandas as pd
 
+from df_viewer import view_df
+
 # %%
-# Intro to Dataframe
+"""
+Q: Create a panda dataframe using an array of arrays
+"""
 df = pd.DataFrame(
     [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10, 11, 12]],
     columns=["A", "B", "C"],
     index=["x", "y", "z", "zz"],
 )
-print(df.head())
 
 # %%
-print(df.tail(2))
+"""
+Q: What are the methods with which one can get the ideas of a dataframe
+"""
+# print(df.head())
+# print(df.tail(2))
+# print(df.columns)
+# print(df.index.tolist())
+# print(df.info())
+# print(df.describe())
+# print(df.nunique())
+# print(df.shape)
+# print(df.size)
 
 # %%
-print(df.columns)
-
-# %%
-print(df.index.tolist())
-
-# %%
-print(df.info())
-
-# %%
-print(df.describe())
-
-# %%
-print(df.nunique())
-
-# %%
+"""
+Q: Find out all the unique values in a column of a panda dataframe
+"""
 print(df["A"].unique())
 
 # %%
-print(df.shape)
-
-# %%
-print(df.size)
-
-# %%
-# Loading in Dataframes from Files
+"""
+Q: How to load data in pandas dataframe from csv, excel and parquet files
+"""
+# csv file
 coffee = pd.read_csv("./warmup-data/coffee.csv")
-print(coffee.head())
-
-# %%
-results = pd.read_parquet("./data/results.parquet")
 bios = pd.read_csv("./data/bios.csv")
-
-# %%
-## To read an excel spreadsheet
+# parquet file
+results = pd.read_parquet("./data/results.parquet")
+# excel file
 olympics_data = pd.read_excel("./data/olympics-data.xlsx", sheet_name="results")
-print(olympics_data.head())
 
 # %%
-# Accessing Data with Pandas
-print(coffee)
-
-# %%
-display(coffee)
-
-# %%
-print(coffee.head())
-
-# %%
-print(coffee.tail(10))
-
-# %%
+"""
+Q: How can you get 5 random rows from a pandas dataframe
+"""
 print(coffee.sample(5))  # Pass in random_state to make deterministic
 
 # %%
