@@ -24,4 +24,4 @@ def view_df(df: pd.DataFrame, filename: str = "df_preview"):
     else:
         print(f"✅ Opened in browser: {url}")
         # Clean up
-        os.remove(full_filename)
+        # os.remove(full_filename)

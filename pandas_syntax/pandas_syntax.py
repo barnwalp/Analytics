@@ -53,62 +53,60 @@ Q: How can you get 5 random rows from a pandas dataframe
 print(coffee.sample(5))  # Pass in random_state to make deterministic
 
 # %%
-# loc allows to filter by rows and columns
-# coffee.loc[Rows, Columns]
-print(coffee.loc[0])
+"""
+Q: What are some ways you can select data from rows and columns
+"""
+# Get the rows 0,1,5
+print(coffee.iloc[[0, 1, 5]])
+
+# Get the rows 0,1,5 & columns Day and Units sold
+{col: i for i, col in enumerate(coffee.columns)}
+print(coffee.iloc[[0, 1, 5], [0, 2]])
+
+# Get the rows 5 to 9 and columns Day and Units sold
+print(coffee.iloc[5:9, 0:2])
 
 # %%
-print(coffee.loc[[0, 1, 5]])
-
-# %%
-print(coffee.loc[5:9, ["Day", "Units Sold"]])
-
-# %%
-# With .iloc the upper index is not inclusive where with .loc it was inclusive
-print(coffee.iloc[:, [0, 2]])
-
-# %%
-coffee.index = coffee["Day"]
-coffee.head()
-
-# %%
-print(coffee.loc["Monday":"Wednesday", ["Day", "Units Sold"]])
-
-# %%
-print(coffee.iloc[0:7, [0, 2]])
-
-# %%
-coffee = pd.read_csv("./warmup-data/coffee.csv")
-
-# %%
-coffee.loc[1:3, "Units Sold"] = 10
-
-# %%
-# Optimized way to get single values (.at & .iat)
-print(coffee.at[0, "Units Sold"])
-
-# %%
+"""
+Q: What are some ways you can select data from a cell
+"""
 print(coffee.iat[3, 1])
 
+"""
+Q: How to change the index of a dataframe
+"""
 # %%
-# Getting Columns
-print(coffee.Day)
+coffee.set_index("Day", inplace=True)
 
+"""
+Q: How to change the values of few cells in a dataframe
+"""
 # %%
-print(coffee["Day"])
+coffee.iloc[1:3, 2] = 10
 
+"""
+Q: How to change the values of few cells in a dataframe
+"""
 # %%
+# Optimized way to get single values (.at & .iat)
+print(coffee.iat[0, 2])
+
+
+"""
+Q: How to get a particular column and sort them in ascending order
+"""
+# %%
+# Get a column
+print(coffee["Coffee Type"])
 # Sort values
 print(coffee.sort_values(["Units Sold"], ascending=False))
+print(coffee.sort_values(["Units Sold", "Coffee Type"], ascending=[False, True]))
 
+"""
+Q: How can you iterate over a dataframe with for loop
+"""
 # %%
-print(coffee.sort_values(["Units Sold", "Coffee Type"], ascending=[0, 0]))
-
-# %%
-# Iterate over dataframe with for loop
 for index, row in coffee.iterrows():
-    print(index)
-    print(row)
     print("Coffee Type of Row:", row["Coffee Type"])
 
 # %%
@@ -127,7 +125,7 @@ print(bios[bios["height_cm"] > 215][["name", "height_cm"]])
 
 # %%
 # Multiple filter condition
-print(bios[(bios["height_cm"] > 215) & (bios["born_country"] == "USA")])
+print(bios[(bios["height_cm"] > 215) & (bios["born_country"] == "USA")]))
 
 # %%
 # Filter by string conditions
@@ -439,7 +437,6 @@ print(pivot_table)
 
 
 import matplotlib.pyplot as plt
-
 # %%
 import pandas as pd
 
