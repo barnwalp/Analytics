@@ -109,10 +109,9 @@ Q: How can you iterate over a dataframe with for loop
 for index, row in coffee.iterrows():
     print("Coffee Type of Row:", row["Coffee Type"])
 
-# %%
-# Filtering Data
-print(bios.head())
-
+"""
+Q: How can you filter the dataframe
+"""
 # %%
 print(bios.loc[bios["height_cm"] > 215])
 
